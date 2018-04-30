@@ -43,7 +43,7 @@ theme_boxplot <- function(base_size = 12){
 ```
 
 
-```{r, echo=FALSE, fig.width = 9, fig.height = 6, fig.cap="Boxplot showing number of species fished per year from 1990 - 2016", , fig.align="center"}
+```{r, echo=FALSE, fig.width = 9, fig.height = 6, fig.cap="Boxplot showing number of species fished per year from 1990 - 2016.  Each box shows mean (horizontal line), quantiles 1 and 3 (box), and outliers (dots).", , fig.align="center"}
 
 plot_alldiv2 <- ggplot(data=all_div2, aes(x=State, y=n)) + geom_boxplot() +
                 theme_boxplot() + ylab("Number of species fished")

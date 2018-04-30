@@ -26,7 +26,7 @@ sp_colors2 <- c("black","red","lightblue","darkolivegreen4","coral","purple","gr
 
 val_sp_plot <- ggplot(data=all_time_max, aes(x=Year, y=Revenue)) +
                geom_point(size=3, aes(color=Species_Group)) + theme_bw() + 
-               ylab("Revenue by Species group") + xlab("") +
+               ylab("Revenue from most lucrative species") + xlab("") +
                facet_wrap(~State, scales="free") +
                #geom_text(aes(label=Species_Group),hjust=-0.1, vjust=0) +
                scale_colour_manual(values=sp_colors2, guide = FALSE,
@@ -101,7 +101,7 @@ val_sp_plot3
 
 ```
 
-```{r, fig.cap="Fisheries revenue and revenue per pound for Pacific states from 1990 - 2016", fig.width = 9, fig.height = 12, fig.align="center", echo=FALSE}
+```{r, fig.cap="Annual variation in revenue from most lucrative fisheries species (top) and revenue per pound (bottom) for US Pacific states from 1990 - 2016", fig.width = 9, fig.height = 12, fig.align="center", echo=FALSE}
 
 ggarrange(val_sp_plot, val_sp_plot3, nrow=2)
 
