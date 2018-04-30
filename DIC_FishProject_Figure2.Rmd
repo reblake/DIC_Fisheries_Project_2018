@@ -1,0 +1,109 @@
+---
+title: "DIC Fisheries Project Figure 2"
+author: "Rachael E. Blake"
+date: "April 26, 2018"
+output: html_document
+---
+<style>
+p.caption {
+  font-size: 1.6em;
+}
+</style>
+
+```{r, include=FALSE, echo=FALSE}
+source("./DIC_Fisheries_Project.R")
+
+library(egg) 
+
+```
+
+
+```{r, echo=FALSE, include=FALSE, fig.width = 9, fig.height = 12}
+
+
+sp_colors2 <- c("black","red","lightblue","darkolivegreen4","coral","purple","gray",
+                "pink","gold","dodgerblue")
+
+val_sp_plot <- ggplot(data=all_time_max, aes(x=Year, y=Revenue)) +
+               geom_point(size=3, aes(color=Species_Group)) + theme_bw() + 
+               ylab("Revenue by Species group") + xlab("") +
+               facet_wrap(~State, scales="free") +
+               #geom_text(aes(label=Species_Group),hjust=-0.1, vjust=0) +
+               scale_colour_manual(values=sp_colors2, guide = FALSE,
+                                   breaks=all_time_max$Species_Group) +
+               theme(panel.grid.major=element_blank(),
+                     panel.grid.minor=element_blank(),
+                     axis.text=element_text(size=12),
+                     axis.title=element_text(size=18),
+                     strip.text.x=element_text(size=14),
+                     strip.background=element_rect(colour='black', fill='white'),
+                     legend.key.size=unit(15,"points"),
+                     legend.text=element_text(size=13),
+                     legend.key=element_blank(),
+                     legend.title=element_blank(),
+                     legend.position=c(.85,.2))
+
+#val_sp_plot
+
+```
+
+
+```{r, eval=FALSE, echo=FALSE, include=FALSE}
+
+
+val_sp_plot2 <- ggplot(data=all_time_max, aes(x=Year, y=Pounds)) +
+                geom_point(size=3, aes(color=Species_Group)) + theme_bw() + 
+                ylab("Pounds by Species group") +
+                facet_wrap(~State, scales="free") +
+                #geom_text(aes(label=Species_Group),hjust=-0.1, vjust=0) +
+                scale_colour_manual(values=sp_colors2, #guide = TRUE,
+                                    breaks=all_time_max$Species_Group) +
+                theme(panel.grid.major=element_blank(),
+                      panel.grid.minor=element_blank(),
+                      axis.text=element_text(size=12),
+                      axis.title=element_text(size=18),
+                      strip.text.x=element_text(size=14),
+                      strip.background=element_rect(colour='black', fill='white'),
+                      legend.key.size=unit(15,"points"),
+                      legend.text=element_text(size=13),
+                      legend.key=element_blank(),
+                      legend.title=element_blank(),
+                      legend.position=c(.85,.2))
+
+
+
+```
+
+
+```{r, echo=FALSE, include=FALSE, fig.width = 9, fig.height = 12}
+
+
+val_sp_plot3 <- ggplot(data=ppp, aes(x=Year, y=PricePPound)) +
+                geom_point(size=3, aes(color=Species_Group)) + theme_bw() + 
+                ylab("Revenue per Pound") +
+                facet_wrap(~State, scales="free") +
+                #geom_text(aes(label=Species_Group),hjust=-0.1, vjust=0) +
+                scale_colour_manual(values=sp_colors2, #guide = TRUE,
+                                    breaks=all_time_max$Species_Group) +
+                theme(panel.grid.major=element_blank(),
+                      panel.grid.minor=element_blank(),
+                      axis.text=element_text(size=12),
+                      axis.title=element_text(size=18),
+                      strip.text.x=element_text(size=14),
+                      strip.background=element_rect(colour='black', fill='white'),
+                      legend.key.size=unit(15,"points"),
+                      legend.text=element_text(size=13),
+                      legend.key=element_blank(),
+                      legend.title=element_blank(),
+                      legend.position=c(.85,.2))
+
+val_sp_plot3
+
+```
+
+```{r, fig.cap="Fisheries revenue and revenue per pound for Pacific states from 1990 - 2016", fig.width = 9, fig.height = 12, fig.align="center", echo=FALSE}
+
+ggarrange(val_sp_plot, val_sp_plot3, nrow=2)
+
+```
+

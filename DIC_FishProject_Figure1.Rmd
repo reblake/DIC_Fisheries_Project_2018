@@ -1,0 +1,31 @@
+---
+title: "DIC_Fisheries_Project_Figure_1"
+author: "Rachael E. Blake"
+date: "April 26, 2018"
+output: html_document
+---
+
+```{r, echo=FALSE, include=FALSE}
+source("./DIC_Fisheries_Project.R")
+
+```
+
+```{r, echo=FALSE, fig.width = 9, fig.height = 7}
+
+sp_colors <- c("red","coral","gray","blue")
+
+val_plot <- ggplot(data=all_st_max, aes(x=State, y=Revenue)) + 
+            geom_point(size=5, aes(color=Species_Group)) + theme_bw() + 
+            ylab("Revenue by Species group") +
+            geom_text(aes(label=Species_Group),hjust=-0.3, vjust=0) +
+            scale_colour_manual(values=sp_colors, guide = FALSE,
+                                breaks=c("Salmon", "Crabs", "Tuna", "Shellfish")) +
+            theme(panel.grid.major=element_blank(),
+                  panel.grid.minor=element_blank(),
+                  axis.text=element_text(size=14),
+                  axis.title=element_text(size=18))
+val_plot
+
+```
+
+
